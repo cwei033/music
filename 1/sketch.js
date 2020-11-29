@@ -4,7 +4,7 @@ var button;
 var fft;
 var volhistory = [];
 var spectrumHistory = [];
-let y = 500;
+let notes = [];
 
 
 function preload() {
@@ -28,6 +28,9 @@ function setup() {
   song.play();
   amp = new p5.Amplitude();
   fft = new p5.FFT(0, 16);
+
+  notes[0] = new Notes();
+
 }
 
 function draw() {
@@ -60,14 +63,19 @@ function draw() {
 }
 
 function drawNotes() {
-  for (var i = 0; i < spectrumHistory.length; i++) {
-    if (spectrumHistory[i][1] === 255) {
-      background(220);
-      fill(255);
-      // y = y - 1;
-      circle(50, random(height), 10);
-    } else {
-      background(220);
+
+
+  if (spectrumHistory[spectrumHistory.length - 1][1] == 255) {
+    notes.push(new Notes());
+  }
+
+  for (let i = 0; i < notes.length; i++) {
+    notes[i].display();
+    notes[i].move();
+  }
+  for (let i = notes.length - 1; i >= 0; i--) {
+    if (notes[i].y > height) {
+      notes.splice(i, 1);
     }
   }
 }
