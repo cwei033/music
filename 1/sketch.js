@@ -66,6 +66,8 @@ function drawNotes() {
       fill(255);
       // y = y - 1;
       circle(50, random(height), 10);
+    } else {
+      background(220);
     }
   }
 }
