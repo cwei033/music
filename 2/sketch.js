@@ -30,6 +30,8 @@ let appearLine7 = 0;
 let appearLine8 = 0;
 let appearLine9 = 0;
 let titleFont;
+let subFont;
+let italicFont;
 let bg;
 
 let state = 'title';
@@ -41,6 +43,8 @@ function preload() {
   song2 = loadSound('level2.mp3')
   song3 = loadSound('level3.mp3')
   titleFont = loadFont('Meddon-Regular.ttf')
+  subFont = loadFont('AndikaNewBasic-Regular.ttf')
+  italicFont = loadFont('AndikaNewBasic-Italic.ttf')
   bg = loadImage('LRKp.gif')
 }
 
@@ -124,11 +128,16 @@ function title() {
   textFont(titleFont);
   text('Love and Time', width / 2, height*.35);
   pop();
+  push();
+  textFont(subFont);
+  textSize(15);
+  text(`::use DFJKL keys to hit the corresponding notes::`, width / 2, height*.53);
   textSize(20);
-  text(`[how to play:]
-use DFJKL keys to hit the corresponding notes`, width / 2, height*.5);
-  textSize(30);
-  text('begin the tale...(click)', width / 2, height*.70);
+  text('begin the tale...', width*.46, height*.70);
+  textFont(italicFont);
+  textSize(15);
+  text('(click)', width*.6, height*.70);
+  pop();
 }
 
 function titleMouseClicked() {
@@ -316,6 +325,7 @@ function endOfLevel1() {
     fill(255);
     noStroke();
     textSize(20);
+    textFont(subFont);
     text(`the tale continues...(click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(end1MouseClicked);
@@ -325,6 +335,7 @@ function endOfLevel1() {
     fill(255);
     noStroke();
     textSize(20);
+    textFont(subFont);
     text(`not enough points to proceed...try again? (click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(retry1MouseClicked);
@@ -433,7 +444,7 @@ function drawNotes2() {
   if (spectrumHistory[spectrumHistory.length - 1][5] >= 120) {
     notes4.push(new Notes(w * 4));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][2] >= 217) {
+  if (spectrumHistory[spectrumHistory.length - 1][2] >= 210) {
     notes5.push(new Notes(w * 5));
   }
 
@@ -493,11 +504,12 @@ function drawNotes2() {
 
 function endOfLevel2() {
   background(bg);
-  if (points >= 620) {
+  if (points >= 680) {
     push();
     rectMode(CENTER);
     fill(255);
     noStroke();
+    textFont(subFont);
     textSize(20);
     text(`the tale continues...(click)`, width/2, height/2)
     pop();
@@ -507,6 +519,7 @@ function endOfLevel2() {
     rectMode(CENTER);
     fill(255);
     noStroke();
+    textFont(subFont);
     textSize(20);
     text(`not enough points to proceed...try again? (click)`, width/2, height/2)
     pop();
@@ -677,7 +690,7 @@ function drawNotes3() {
 
 function endOfLevel3() {
   background(bg);
-  if (points >= 330) {
+  if (points >= 300) {
     push();
     rectMode(CENTER);
     if (line9Appear === true) {
@@ -685,18 +698,20 @@ function endOfLevel3() {
     }
     fill(255, appearLine9);
     noStroke();
+    textFont(subFont);
     textSize(20);
     text(`Knowledge smiled with deep wisdom and answered,
 "because only Time is capable of understanding
-how valuable Love is."`, width/2, height/2)
+how valuable Love is."`, width/2, height*.48)
     pop();
-    cnv.mouseClicked(end3MouseClicked);
+    //cnv.mouseClicked(end3MouseClicked);
   } else {
     push();
     rectMode(CENTER);
     fill(255);
     noStroke();
     textSize(20);
+    textFont(subFont);
     text(`not enough points to proceed...try again? (click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(retry3MouseClicked);
