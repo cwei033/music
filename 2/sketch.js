@@ -504,7 +504,7 @@ function drawNotes2() {
 
 function endOfLevel2() {
   background(bg);
-  if (points >= 680) {
+  if (points >= 800) {
     push();
     rectMode(CENTER);
     fill(255);
