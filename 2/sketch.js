@@ -192,7 +192,7 @@ function keyTyped() {
 function level1() {
   background(bg);
   push();
-  fill(255);
+  fill(255, 160);
   noStroke();
   textSize(15);
   text(`points: ${points}`, 645, 20);
@@ -361,7 +361,7 @@ function retry1MouseClicked() {
 function level2() {
   background(bg);
   push();
-  fill(255);
+  fill(255, 160);
   noStroke();
   textSize(15);
   text(`points: ${points}`, 645, 20);
@@ -548,7 +548,7 @@ function retry2MouseClicked() {
 function level3() {
   background(bg);
   push();
-  fill(255);
+  fill(255, 160);
   noStroke();
   textSize(15);
   text(`points: ${points}`, 645, 20);
