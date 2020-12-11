@@ -27,6 +27,8 @@ let appearLine5 = 0;
 let appearLine6 = 0;
 let appearLine7 = 0;
 let appearLine8 = 0;
+let titleFont;
+let bg;
 
 let state = 'title';
 let cnv;
@@ -36,6 +38,8 @@ function preload() {
   song1 = loadSound('level1.mp3')
   song2 = loadSound('level2.mp3')
   song3 = loadSound('level3.mp3')
+  titleFont = loadFont('Meddon-Regular.ttf')
+  bg = loadImage('LRKp.gif')
 }
 
 // function toggleSong() {
@@ -69,7 +73,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(bg);
   var spectrum = fft.analyze();
   console.log(spectrum);
   spectrumHistory.push(spectrum);
@@ -110,11 +114,14 @@ function draw() {
 }
 
 function title() {
-  background(220);
-  textSize(80);
+  background(bg);
+  textSize(70);
   fill(255);
   textAlign(CENTER);
+  push();
+  textFont(titleFont);
   text('Love and Time', width / 2, height*.35);
+  pop();
   textSize(20);
   text(`[how to play:]
 use DFJKL keys to hit the corresponding notes`, width / 2, height*.5);
@@ -172,7 +179,7 @@ function keyTyped() {
 }
 
 function level1() {
-  background(220);
+  background(bg);
   push();
   fill(255);
   noStroke();
@@ -295,12 +302,12 @@ function drawNotes1() {
   push();
   fill(200);
   noStroke();
-  rect(0, 430, 700, 4);
+  rect(0, 430, 700, 2);
   pop();
 }
 
 function endOfLevel1() {
-  background(220);
+  background(bg);
   if (points >= 200) {
     push();
     rectMode(CENTER);
@@ -339,7 +346,7 @@ function retry1MouseClicked() {
 }
 
 function level2() {
-  background(220);
+  background(bg);
   push();
   fill(255);
   noStroke();
@@ -412,19 +419,19 @@ that she did not even hear when Love called her.`, 350, 50);
 }
 
 function drawNotes2() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 60) {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 62) {
     notes1.push(new Notes(w * 1));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][3] >= 190) {
+  if (spectrumHistory[spectrumHistory.length - 1][3] >= 185) {
     notes2.push(new Notes(w * 2));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][4] >= 140) {
+  if (spectrumHistory[spectrumHistory.length - 1][4] >= 137) {
     notes3.push(new Notes(w * 3));
   }
   if (spectrumHistory[spectrumHistory.length - 1][5] >= 120) {
     notes4.push(new Notes(w * 4));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][2] >= 225) {
+  if (spectrumHistory[spectrumHistory.length - 1][2] >= 217) {
     notes5.push(new Notes(w * 5));
   }
 
@@ -478,13 +485,13 @@ function drawNotes2() {
   push();
   fill(200);
   noStroke();
-  rect(0, 430, 700, 4);
+  rect(0, 430, 700, 2);
   pop();
 }
 
 function endOfLevel2() {
-  background(220);
-  if (points >= 500) {
+  background(bg);
+  if (points >= 620) {
     push();
     rectMode(CENTER);
     fill(255);
@@ -524,7 +531,7 @@ function retry2MouseClicked() {
 }
 
 function level3() {
-  background(220);
+  background(bg);
   push();
   fill(255);
   noStroke();
@@ -596,13 +603,13 @@ Love asked Knowledge, another elder,
 }
 
 function drawNotes3() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 15) {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 20) {
     notes1.push(new Notes(w * 1));
   }
   if (spectrumHistory[spectrumHistory.length - 1][3] >= 95) {
     notes2.push(new Notes(w * 2));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][4] >= 30) {
+  if (spectrumHistory[spectrumHistory.length - 1][4] >= 40) {
     notes3.push(new Notes(w * 3));
   }
   if (spectrumHistory[spectrumHistory.length - 1][5] >= 30) {
@@ -662,13 +669,13 @@ function drawNotes3() {
   push();
   fill(200);
   noStroke();
-  rect(0, 430, 700, 4);
+  rect(0, 430, 700, 2);
   pop();
 }
 
 function endOfLevel3() {
-  background(220);
-  if (points >= 450) {
+  background(bg);
+  if (points >= 330) {
     push();
     rectMode(CENTER);
     fill(255);
