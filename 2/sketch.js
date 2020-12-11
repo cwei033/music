@@ -19,6 +19,7 @@ let line5Appear = false;
 let line6Appear = true;
 let line7Appear = false;
 let line8Appear = false;
+let line9Appear = true;
 let appearLine1 = 0;
 let appearLine2 = 0;
 let appearLine3 = 0;
@@ -27,6 +28,7 @@ let appearLine5 = 0;
 let appearLine6 = 0;
 let appearLine7 = 0;
 let appearLine8 = 0;
+let appearLine9 = 0;
 let titleFont;
 let bg;
 
@@ -678,7 +680,10 @@ function endOfLevel3() {
   if (points >= 330) {
     push();
     rectMode(CENTER);
-    fill(255);
+    if (line9Appear === true) {
+      appearLine9 += .5;
+    }
+    fill(255, appearLine9);
     noStroke();
     textSize(20);
     text(`Knowledge smiled with deep wisdom and answered,
