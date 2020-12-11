@@ -81,7 +81,7 @@ function setup() {
 function draw() {
   background(bg);
   var spectrum = fft.analyze();
-  console.log(spectrum);
+  //console.log(spectrum);
   spectrumHistory.push(spectrum);
 
   switch (state) {
