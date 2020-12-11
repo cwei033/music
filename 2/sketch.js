@@ -16,14 +16,17 @@ let line2Appear = false;
 let line3Appear = true;
 let line4Appear = false;
 let line5Appear = false;
-let line6Appear = false;
-let line2Disappear = false;
+let line6Appear = true;
+let line7Appear = false;
+let line8Appear = false;
 let appearLine1 = 0;
 let appearLine2 = 0;
 let appearLine3 = 0;
 let appearLine4 = 0;
 let appearLine5 = 0;
 let appearLine6 = 0;
+let appearLine7 = 0;
+let appearLine8 = 0;
 
 let state = 'title';
 let cnv;
@@ -120,8 +123,8 @@ use DFJKL keys to hit the corresponding notes`, width / 2, height*.5);
 }
 
 function titleMouseClicked() {
-  state = 'level 2';
-  song2.play();
+  state = 'level 1';
+  song1.play();
 
 }
 
@@ -196,7 +199,7 @@ function story1() {
   if (line1Appear === false) {
     appearLine1 -= .1
   }
-  if (appearLine1 < -50 && line2Appear === false) {
+  if (appearLine1 < -80 && line2Appear === false) {
     appearLine2 += .1;
   }
   if (appearLine2 > 255 && line2Appear === false) {
@@ -226,10 +229,10 @@ Love decided to ask for help.`, 350, 50);
 }
 
 function drawNotes1() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 85) {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 90) {
     notes1.push(new Notes(w * 1));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][3] >= 135) {
+  if (spectrumHistory[spectrumHistory.length - 1][3] >= 140) {
     notes2.push(new Notes(w * 2));
   }
   if (spectrumHistory[spectrumHistory.length - 1][4] >= 100) {
@@ -238,7 +241,7 @@ function drawNotes1() {
   if (spectrumHistory[spectrumHistory.length - 1][5] >= 90) {
     notes4.push(new Notes(w * 4));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][2] >= 220) {
+  if (spectrumHistory[spectrumHistory.length - 1][2] >= 225) {
     notes5.push(new Notes(w * 5));
   }
 
@@ -298,12 +301,12 @@ function drawNotes1() {
 
 function endOfLevel1() {
   background(220);
-  if (points >= 320) {
+  if (points >= 200) {
     push();
     rectMode(CENTER);
     fill(255);
     noStroke();
-    textSize(15);
+    textSize(20);
     text(`the tale continues...(click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(end1MouseClicked);
@@ -312,7 +315,7 @@ function endOfLevel1() {
     rectMode(CENTER);
     fill(255);
     noStroke();
-    textSize(15);
+    textSize(20);
     text(`not enough points to proceed...try again? (click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(retry1MouseClicked);
@@ -329,6 +332,10 @@ function retry1MouseClicked() {
   state = 'level 1'
   song1.play();
   points = 0;
+  appearLine1 = 0;
+  appearLine2 = 0;
+  line1Appear = true;
+  line2Appear = false;
 }
 
 function level2() {
@@ -351,34 +358,31 @@ function level2() {
 function story2() {
   push();
   if (line3Appear === true) {
-    appearLine3 += .2
+    appearLine3 += .15;
   }
-  console.log(appearLine4);
-  console.log(line4Appear);
-
   if (appearLine3 >= 255) {
     line3Appear = false;
   }
   if (line3Appear === false) {
-    appearLine3 -= .2;
+    appearLine3 -= .15;
   }
   if (appearLine3 < 0 && line4Appear === false) {
-    appearLine4 += .2;
+    appearLine4 += .15;
   }
   if (appearLine4 > 255 && line4Appear === false) {
     line4Appear = true;
   }
   if (line4Appear === true) {
-    appearLine4 -= .2;
+    appearLine4 -= .15;
   }
   if (line4Appear === true && appearLine4 < 0 && line5Appear === false) {
-    appearLine5 += .2;
+    appearLine5 += .15;
   }
   if (appearLine5 > 255) {
     line5Appear = true;
   }
   if (line5Appear === true) {
-    appearLine5 -= .2
+    appearLine5 -= .15
   }
 
   fill(255, appearLine3);
@@ -386,7 +390,7 @@ function story2() {
   textSize(18);
   text(`Richness was passing by Love in a grand boat.
 Love said, "Richness, can you take me with you?"
-Richness answered, "no, I can't. There is a lot of gold and silver
+Richness answered, "no, I can't. There are a lot of gold and silver
 in my boat. There is no place here for you."`, 350, 50);
   fill(255, appearLine4);
   noStroke();
@@ -408,16 +412,200 @@ that she did not even hear when Love called her.`, 350, 50);
 }
 
 function drawNotes2() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 70) {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 60) {
     notes1.push(new Notes(w * 1));
   }
   if (spectrumHistory[spectrumHistory.length - 1][3] >= 190) {
     notes2.push(new Notes(w * 2));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][4] >= 150) {
+  if (spectrumHistory[spectrumHistory.length - 1][4] >= 140) {
     notes3.push(new Notes(w * 3));
   }
   if (spectrumHistory[spectrumHistory.length - 1][5] >= 120) {
+    notes4.push(new Notes(w * 4));
+  }
+  if (spectrumHistory[spectrumHistory.length - 1][2] >= 225) {
+    notes5.push(new Notes(w * 5));
+  }
+
+
+  for (let i = 1; i < notes1.length; i++) {
+    notes1[i].display();
+    notes1[i].move();
+  }
+  for (let i = notes1.length - 1; i >= 0; i--) {
+    if (notes1[i].y > height) {
+      notes1.splice(i, 1);
+    }
+  }
+  for (let i = 1; i < notes2.length; i++) {
+    notes2[i].display();
+    notes2[i].move();
+  }
+  for (let i = notes2.length - 1; i >= 0; i--) {
+    if (notes2[i].y > height) {
+      notes2.splice(i, 1);
+    }
+  }
+  for (let i = 1; i < notes3.length; i++) {
+    notes3[i].display();
+    notes3[i].move();
+  }
+  for (let i = notes3.length - 1; i >= 0; i--) {
+    if (notes3[i].y > height) {
+      notes3.splice(i, 1);
+    }
+  }
+  for (let i = 1; i < notes4.length; i++) {
+    notes4[i].display();
+    notes4[i].move();
+  }
+  for (let i = notes4.length - 1; i >= 0; i--) {
+    if (notes4[i].y > height) {
+      notes4.splice(i, 1);
+    }
+  }
+  for (let i = 1; i < notes5.length; i++) {
+    notes5[i].display();
+    notes5[i].move();
+  }
+  for (let i = notes5.length - 1; i >= 0; i--) {
+    if (notes5[i].y > height) {
+      notes5.splice(i, 1);
+    }
+  }
+
+  push();
+  fill(200);
+  noStroke();
+  rect(0, 430, 700, 4);
+  pop();
+}
+
+function endOfLevel2() {
+  background(220);
+  if (points >= 500) {
+    push();
+    rectMode(CENTER);
+    fill(255);
+    noStroke();
+    textSize(20);
+    text(`the tale continues...(click)`, width/2, height/2)
+    pop();
+    cnv.mouseClicked(end2MouseClicked);
+  } else {
+    push();
+    rectMode(CENTER);
+    fill(255);
+    noStroke();
+    textSize(20);
+    text(`not enough points to proceed...try again? (click)`, width/2, height/2)
+    pop();
+    cnv.mouseClicked(retry2MouseClicked);
+  }
+}
+
+function end2MouseClicked() {
+  state = 'level 3'
+  song3.play();
+  points = 0;
+}
+
+function retry2MouseClicked() {
+  state = 'level 2'
+  song2.play();
+  points = 0;
+  appearLine3 = 0;
+  appearLine4 = 0;
+  appearLine5 = 0;
+  line3Appear = true;
+  line4Appear = false;
+  line5Appear = false;
+}
+
+function level3() {
+  background(220);
+  push();
+  fill(255);
+  noStroke();
+  textSize(15);
+  text(`points: ${points}`, 645, 20);
+  pop();
+
+  story3();
+
+  if (song3.isPlaying() === false) {
+    state = 'end of level 3';
+  }
+
+}
+
+function story3() {
+  push()
+  if (line6Appear === true) {
+    appearLine6 += .25;
+  }
+  if (appearLine6 >= 255) {
+    line6Appear = false;
+  }
+  if (line6Appear === false) {
+    appearLine6 -= .25;
+  }
+  if (appearLine6 < 0 && line7Appear === false) {
+    appearLine7 += .25;
+  }
+  if (appearLine7 > 255 && line7Appear === false) {
+    line7Appear = true;
+  }
+  if (line7Appear === true) {
+    appearLine7 -= .25;
+  }
+  if (line7Appear === true && appearLine7 < 0 && line8Appear === false) {
+    appearLine8 += .25;
+  }
+  if (appearLine8 > 255) {
+    line8Appear = true;
+  }
+  if (line8Appear === true) {
+    appearLine8 -= .25;
+  }
+
+  fill(255, appearLine6);
+  noStroke();
+  textSize(18);
+  text(`Suddenly, there was a voice,
+  "Come, Love, I will take you."
+  It was an elder.
+  So blessed and overjoyed, Love even forgot to ask the elder
+  where they were going.`, 350, 50);
+  fill(255, appearLine7);
+  noStroke();
+  textSize(18);
+  text(`When they arrived at dry land, the elder went her own way.
+Realizing how much was owed the elder,
+Love asked Knowledge, another elder,
+"Who helped me?"`, 350, 50);
+  fill(255, appearLine8);
+  noStroke();
+  textSize(18);
+  text(`"It was Time," Knowledge answered.
+  "Time?" asked Love.
+  "But why did Time help me?"`, 350, 50);
+
+  pop();
+}
+
+function drawNotes3() {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 15) {
+    notes1.push(new Notes(w * 1));
+  }
+  if (spectrumHistory[spectrumHistory.length - 1][3] >= 95) {
+    notes2.push(new Notes(w * 2));
+  }
+  if (spectrumHistory[spectrumHistory.length - 1][4] >= 30) {
+    notes3.push(new Notes(w * 3));
+  }
+  if (spectrumHistory[spectrumHistory.length - 1][5] >= 30) {
     notes4.push(new Notes(w * 4));
   }
   if (spectrumHistory[spectrumHistory.length - 1][2] >= 200) {
@@ -478,136 +666,17 @@ function drawNotes2() {
   pop();
 }
 
-function endOfLevel2() {
-  background(220);
-  if (points >= 1100) {
-    push();
-    rectMode(CENTER);
-    fill(255);
-    noStroke();
-    textSize(15);
-    text(`the tale continues...(click)`, width/2, height/2)
-    pop();
-    cnv.mouseClicked(end2MouseClicked);
-  } else {
-    push();
-    rectMode(CENTER);
-    fill(255);
-    noStroke();
-    textSize(15);
-    text(`not enough points to proceed...try again? (click)`, width/2, height/2)
-    pop();
-    cnv.mouseClicked(retry2MouseClicked);
-  }
-}
-
-function end2MouseClicked() {
-  state = 'level 3'
-  song3.play();
-  points = 0;
-}
-
-function retry2MouseClicked() {
-  state = 'level 2'
-  song2.play();
-  points = 0;
-}
-
-function level3() {
-  background(220);
-  push();
-  fill(255);
-  noStroke();
-  textSize(15);
-  text(`points: ${points}`, 645, 20);
-  pop();
-
-  if (song3.isPlaying() === false) {
-    state = 'end of level 3';
-  }
-
-}
-
-function drawNotes3() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 85) {
-    notes1.push(new Notes(w * 1));
-  }
-  if (spectrumHistory[spectrumHistory.length - 1][3] >= 135) {
-    notes2.push(new Notes(w * 2));
-  }
-  if (spectrumHistory[spectrumHistory.length - 1][4] >= 100) {
-    notes3.push(new Notes(w * 3));
-  }
-  if (spectrumHistory[spectrumHistory.length - 1][5] >= 90) {
-    notes4.push(new Notes(w * 4));
-  }
-  if (spectrumHistory[spectrumHistory.length - 1][2] >= 220) {
-    notes5.push(new Notes(w * 5));
-  }
-
-
-  for (let i = 1; i < notes1.length; i++) {
-    notes1[i].display();
-    notes1[i].move();
-  }
-  for (let i = notes1.length - 1; i >= 0; i--) {
-    if (notes1[i].y > height) {
-      notes1.splice(i, 1);
-    }
-  }
-  for (let i = 1; i < notes2.length; i++) {
-    notes2[i].display();
-    notes2[i].move();
-  }
-  for (let i = notes2.length - 1; i >= 0; i--) {
-    if (notes2[i].y > height) {
-      notes2.splice(i, 1);
-    }
-  }
-  for (let i = 1; i < notes3.length; i++) {
-    notes3[i].display();
-    notes3[i].move();
-  }
-  for (let i = notes3.length - 1; i >= 0; i--) {
-    if (notes3[i].y > height) {
-      notes3.splice(i, 1);
-    }
-  }
-  for (let i = 1; i < notes4.length; i++) {
-    notes4[i].display();
-    notes4[i].move();
-  }
-  for (let i = notes4.length - 1; i >= 0; i--) {
-    if (notes4[i].y > height) {
-      notes4.splice(i, 1);
-    }
-  }
-  for (let i = 1; i < notes5.length; i++) {
-    notes5[i].display();
-    notes5[i].move();
-  }
-  for (let i = notes5.length - 1; i >= 0; i--) {
-    if (notes5[i].y > height) {
-      notes5.splice(i, 1);
-    }
-  }
-
-  push();
-  fill(200);
-  noStroke();
-  rect(0, 430, 700, 4);
-  pop();
-}
-
 function endOfLevel3() {
   background(220);
-  if (points >= 320) {
+  if (points >= 450) {
     push();
     rectMode(CENTER);
     fill(255);
     noStroke();
-    textSize(15);
-    text(`Knowledge smiled with deep wisdom and answered, "because only Time is capable of understanding how valuable Love is."`, width/2, height/2)
+    textSize(20);
+    text(`Knowledge smiled with deep wisdom and answered,
+"because only Time is capable of understanding
+how valuable Love is."`, width/2, height/2)
     pop();
     cnv.mouseClicked(end3MouseClicked);
   } else {
@@ -615,7 +684,7 @@ function endOfLevel3() {
     rectMode(CENTER);
     fill(255);
     noStroke();
-    textSize(15);
+    textSize(20);
     text(`not enough points to proceed...try again? (click)`, width/2, height/2)
     pop();
     cnv.mouseClicked(retry3MouseClicked);
@@ -626,4 +695,10 @@ function retry3MouseClicked() {
   state = 'level 3'
   song3.play();
   points = 0;
+  appearLine6 = 0;
+  appearLine7 = 0;
+  appearLine8 = 0;
+  line6Appear = true;
+  line7Appear = false;
+  line8Appear = false;
 }
