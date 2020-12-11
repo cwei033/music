@@ -7,6 +7,8 @@ class Notes {
   display() {
     //background(220);
     fill(255);
+    strokeWeight(10);
+    stroke(255, 70)
     circle(this.x, this.y, 60);
 
      // if (this.y < 0) {
