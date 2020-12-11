@@ -690,7 +690,7 @@ function drawNotes3() {
 
 function endOfLevel3() {
   background(bg);
-  if (points >= 300) {
+  if (points >= 295) {
     push();
     rectMode(CENTER);
     if (line9Appear === true) {
