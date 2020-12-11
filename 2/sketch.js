@@ -196,7 +196,7 @@ function story1() {
   if (line1Appear === false) {
     appearLine1 -= .1
   }
-  if (appearLine1 < 0 && line2Appear === false) {
+  if (appearLine1 < 50 && line2Appear === false) {
     appearLine2 += .1;
   }
   if (appearLine2 > 255 && line2Appear === false) {
