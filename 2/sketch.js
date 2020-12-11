@@ -13,7 +13,7 @@ let w = 119;
 let points = 0;
 let line1Appear = true;
 let line2Appear = false;
-let line3Appear = false;
+let line3Appear = true;
 let line4Appear = false;
 let line5Appear = false;
 let line6Appear = false;
@@ -120,8 +120,8 @@ use DFJKL keys to hit the corresponding notes`, width / 2, height*.5);
 }
 
 function titleMouseClicked() {
-  state = 'level 1';
-  song1.play();
+  state = 'level 2';
+  song2.play();
 
 }
 
@@ -196,7 +196,7 @@ function story1() {
   if (line1Appear === false) {
     appearLine1 -= .1
   }
-  if (appearLine1 < 50 && line2Appear === false) {
+  if (appearLine1 < -50 && line2Appear === false) {
     appearLine2 += .1;
   }
   if (appearLine2 > 255 && line2Appear === false) {
@@ -205,8 +205,7 @@ function story1() {
   if (line2Appear === true) {
     appearLine2 -= .1
   }
-  console.log(appearLine2);
-  console.log(line2Appear)
+
   fill(255, appearLine1);
   noStroke();
   textSize(18);
@@ -341,26 +340,87 @@ function level2() {
   text(`points: ${points}`, 645, 20);
   pop();
 
+  story2();
+
   if (song2.isPlaying() === false) {
     state = 'end of level 2';
   }
 
 }
 
+function story2() {
+  push();
+  if (line3Appear === true) {
+    appearLine3 += .2
+  }
+  console.log(appearLine4);
+  console.log(line4Appear);
+
+  if (appearLine3 >= 255) {
+    line3Appear = false;
+  }
+  if (line3Appear === false) {
+    appearLine3 -= .2;
+  }
+  if (appearLine3 < 0 && line4Appear === false) {
+    appearLine4 += .2;
+  }
+  if (appearLine4 > 255 && line4Appear === false) {
+    line4Appear = true;
+  }
+  if (line4Appear === true) {
+    appearLine4 -= .2;
+  }
+  if (line4Appear === true && appearLine4 < 0 && line5Appear === false) {
+    appearLine5 += .2;
+  }
+  if (appearLine5 > 255) {
+    line5Appear = true;
+  }
+  if (line5Appear === true) {
+    appearLine5 -= .2
+  }
+
+  fill(255, appearLine3);
+  noStroke();
+  textSize(18);
+  text(`Richness was passing by Love in a grand boat.
+Love said, "Richness, can you take me with you?"
+Richness answered, "no, I can't. There is a lot of gold and silver
+in my boat. There is no place here for you."`, 350, 50);
+  fill(255, appearLine4);
+  noStroke();
+  textSize(18);
+  text(`Love decided to ask Vanity
+who was also passing by in a beautiful vessel.
+"Vanity, please help me!" "I can't help you, Love.
+You are all wet and might damage my boat," Vanity answered.`, 350, 50);
+  fill(255, appearLine5);
+  noStroke();
+  textSize(18);
+  text(`Sadness was close by so Love asked
+"Sadness, let me go with you."
+"Oh...Love, I am so sad that I need to be by myself!"
+Happiness passed by Love, too, but she was so happy
+that she did not even hear when Love called her.`, 350, 50);
+
+  pop();
+}
+
 function drawNotes2() {
-  if (spectrumHistory[spectrumHistory.length - 1][6] >= 85) {
+  if (spectrumHistory[spectrumHistory.length - 1][6] >= 70) {
     notes1.push(new Notes(w * 1));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][3] >= 135) {
+  if (spectrumHistory[spectrumHistory.length - 1][3] >= 190) {
     notes2.push(new Notes(w * 2));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][4] >= 100) {
+  if (spectrumHistory[spectrumHistory.length - 1][4] >= 150) {
     notes3.push(new Notes(w * 3));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][5] >= 90) {
+  if (spectrumHistory[spectrumHistory.length - 1][5] >= 120) {
     notes4.push(new Notes(w * 4));
   }
-  if (spectrumHistory[spectrumHistory.length - 1][2] >= 220) {
+  if (spectrumHistory[spectrumHistory.length - 1][2] >= 200) {
     notes5.push(new Notes(w * 5));
   }
 
@@ -420,7 +480,7 @@ function drawNotes2() {
 
 function endOfLevel2() {
   background(220);
-  if (points >= 320) {
+  if (points >= 1100) {
     push();
     rectMode(CENTER);
     fill(255);
