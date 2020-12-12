@@ -130,17 +130,17 @@ function title() {
   textAlign(CENTER);
   push();
   textFont(titleFont);
-  text('Love and Time', width / 2, height*.5);
+  text('Love and Time', width / 2, height * .5);
   pop();
   push();
   textFont(subFont);
   //textSize(15);
   //text(`::use DFJKL keys to hit the corresponding notes::`, width / 2, height*.53);
   textSize(20);
-  text('begin the tale...', width*.46, height*.70);
+  text('begin the tale...', width * .46, height * .70);
   textFont(italicFont);
   textSize(15);
-  text('(click)', width*.6, height*.70);
+  text('(click)', width * .6, height * .70);
   pop();
 }
 
@@ -154,32 +154,32 @@ function instructions() {
   push();
   textFont(titleFont);
   textSize(50)
-  text(`How to Play`, width*.5, height*.3);
+  text(`How to Play`, width * .5, height * .3);
   textFont(subFont);
   textSize(18);
-  text(`use DFJKL keys to hit the corresponding notes when they hit the line`, width*.5, height*.43);
+  text(`use DFJKL keys to hit the corresponding notes when they hit the line`, width * .5, height * .43);
 
   fill(255);
   strokeWeight(10);
   stroke(255, 70)
-  circle(w * 1, height*.67, 60);
-  circle(w * 2, height*.75, 60);
-  circle(w * 3, height*.7, 60);
-  circle(w * 4, height*.85, 60);
-  circle(w * 5, height*.64, 60);
+  circle(w * 1, height * .67, 60);
+  circle(w * 2, height * .75, 60);
+  circle(w * 3, height * .7, 60);
+  circle(w * 4, height * .85, 60);
+  circle(w * 5, height * .64, 60);
   fill(200);
   textSize(28);
-  text(`D`, w*1, height*.69);
-  text(`F`, w*2, height*.77);
-  text(`J`, w*3, height*.72);
-  text(`K`, w*4, height*.87);
-  text(`L`, w*5, height*.66);
+  text(`D`, w * 1, height * .69);
+  text(`F`, w * 2, height * .77);
+  text(`J`, w * 3, height * .72);
+  text(`K`, w * 4, height * .87);
+  text(`L`, w * 5, height * .66);
   fill(200);
   noStroke();
   rect(0, 430, 700, 2);
   fill(255, 160);
   textSize(16);
-  text(`(click to start...)`, width*.91, height*.98);
+  text(`(click to start...)`, width * .91, height * .98);
 
   pop();
 }
@@ -369,7 +369,7 @@ function endOfLevel1() {
     noStroke();
     textSize(20);
     textFont(subFont);
-    text(`the tale continues...(click)`, width/2, height/2)
+    text(`the tale continues...(click)`, width / 2, height / 2)
     pop();
     cnv.mouseClicked(end1MouseClicked);
   } else {
@@ -379,7 +379,7 @@ function endOfLevel1() {
     noStroke();
     textSize(20);
     textFont(subFont);
-    text(`not enough points to proceed...try again? (click)`, width/2, height/2)
+    text(`not enough points to proceed...try again? (click)`, width / 2, height / 2)
     pop();
     cnv.mouseClicked(retry1MouseClicked);
   }
@@ -554,7 +554,7 @@ function endOfLevel2() {
     noStroke();
     textFont(subFont);
     textSize(20);
-    text(`the tale continues...(click)`, width/2, height/2)
+    text(`the tale continues...(click)`, width / 2, height / 2)
     pop();
     cnv.mouseClicked(end2MouseClicked);
   } else {
@@ -564,7 +564,7 @@ function endOfLevel2() {
     noStroke();
     textFont(subFont);
     textSize(20);
-    text(`not enough points to proceed...try again? (click)`, width/2, height/2)
+    text(`not enough points to proceed...try again? (click)`, width / 2, height / 2)
     pop();
     cnv.mouseClicked(retry2MouseClicked);
   }
@@ -745,7 +745,10 @@ function endOfLevel3() {
     textSize(20);
     text(`Knowledge smiled with deep wisdom and answered,
 "because only Time is capable of understanding
-how valuable Love is."`, width/2, height*.48)
+how valuable Love is."`, width / 2, height * .48)
+    fill(255, 160);
+    textSize(14);
+    text(`story courtesy of thesilentchild(tumblr)`, width * .815, height * .98);
     pop();
     //cnv.mouseClicked(end3MouseClicked);
   } else {
@@ -755,7 +758,7 @@ how valuable Love is."`, width/2, height*.48)
     noStroke();
     textSize(20);
     textFont(subFont);
-    text(`not enough points to proceed...try again? (click)`, width/2, height/2)
+    text(`not enough points to proceed...try again? (click)`, width / 2, height / 2)
     pop();
     cnv.mouseClicked(retry3MouseClicked);
   }
