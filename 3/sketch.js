@@ -193,54 +193,6 @@ function instructMouseClicked() {
   song1.play();
 }
 
-function keyTyped() {
-  for (let i = 1; i < notes1.length; i++) {
-    if (key === 'd') {
-      if (notes1[i].y > 410 && notes1[i].y < 450) {
-        points++;
-        // notes1[i].size += 2;
-        // notes1[i].transparency -= 10;
-        // notes1[i].strokeAlpha -= 10;
-        // if (notes1[i].size > 70) {
-          //notes1.splice(i, 1);
-        // }
-      }
-    }
-  }
-  for (let i = 1; i < notes2.length; i++) {
-    if (key === 'f') {
-      if (notes2[i].y > 410 && notes2[i].y < 450) {
-        points++;
-        //notes2.splice(i, 1);
-      }
-    }
-  }
-  for (let i = 1; i < notes3.length; i++) {
-    if (key === 'j') {
-      if (notes3[i].y > 410 && notes3[i].y < 450) {
-        points++;
-        //notes3.splice(i, 1);
-      }
-    }
-  }
-  for (let i = 1; i < notes4.length; i++) {
-    if (key === 'k') {
-      if (notes4[i].y > 410 && notes4[i].y < 450) {
-        points++;
-        //notes4.splice(i, 1);
-      }
-    }
-  }
-  for (let i = 1; i < notes5.length; i++) {
-    if (key === 'l') {
-      if (notes5[i].y > 410 && notes5[i].y < 450) {
-        points++;
-        //notes5.splice(i, 1);
-      }
-    }
-  }
-}
-
 function level1() {
   background(bg);
   push();
@@ -841,4 +793,52 @@ function retry3MouseClicked() {
   line6Appear = true;
   line7Appear = false;
   line8Appear = false;
+}
+
+function keyTyped() {
+  for (let i = 1; i < notes1.length; i++) {
+    if (key === 'd') {
+      if (notes1[i].y > 410 && notes1[i].y < 450) {
+        points++;
+        // notes1[i].size += 2;
+        // notes1[i].transparency -= 10;
+        // notes1[i].strokeAlpha -= 10;
+        if (notes1[i].size > 65) {
+          notes1.splice(i, 1);
+        }
+      }
+    }
+  }
+  for (let i = 1; i < notes2.length; i++) {
+    if (key === 'f') {
+      if (notes2[i].y > 410 && notes2[i].y < 450) {
+        points++;
+        //notes2.splice(i, 1);
+      }
+    }
+  }
+  for (let i = 1; i < notes3.length; i++) {
+    if (key === 'j') {
+      if (notes3[i].y > 410 && notes3[i].y < 450) {
+        points++;
+        //notes3.splice(i, 1);
+      }
+    }
+  }
+  for (let i = 1; i < notes4.length; i++) {
+    if (key === 'k') {
+      if (notes4[i].y > 410 && notes4[i].y < 450) {
+        points++;
+        //notes4.splice(i, 1);
+      }
+    }
+  }
+  for (let i = 1; i < notes5.length; i++) {
+    if (key === 'l') {
+      if (notes5[i].y > 410 && notes5[i].y < 450) {
+        points++;
+        //notes5.splice(i, 1);
+      }
+    }
+  }
 }
