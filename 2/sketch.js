@@ -179,6 +179,7 @@ function instructions() {
   rect(0, 430, 700, 2);
   fill(255, 160);
   textSize(16);
+  textFont(italicFont);
   text(`(click to start...)`, width * .91, height * .98);
 
   pop();
