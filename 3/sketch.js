@@ -211,7 +211,7 @@ function keyTyped() {
     if (key === 'f') {
       if (notes2[i].y > 410 && notes2[i].y < 450) {
         points++;
-        notes2.splice(i, 1);
+        //notes2.splice(i, 1);
       }
     }
   }
@@ -219,7 +219,7 @@ function keyTyped() {
     if (key === 'j') {
       if (notes3[i].y > 410 && notes3[i].y < 450) {
         points++;
-        notes3.splice(i, 1);
+        //notes3.splice(i, 1);
       }
     }
   }
@@ -227,7 +227,7 @@ function keyTyped() {
     if (key === 'k') {
       if (notes4[i].y > 410 && notes4[i].y < 450) {
         points++;
-        notes4.splice(i, 1);
+        //notes4.splice(i, 1);
       }
     }
   }
@@ -235,7 +235,7 @@ function keyTyped() {
     if (key === 'l') {
       if (notes5[i].y > 410 && notes5[i].y < 450) {
         points++;
-        notes5.splice(i, 1);
+        //notes5.splice(i, 1);
       }
     }
   }
@@ -256,15 +256,61 @@ function level1() {
     state = 'end of level 1';
   }
 
-  console.log(notes1);
-
   for (let i = 1; i < notes1.length; i++) {
     if (keyIsDown(68)) {
-      if (notes1[i].y > 410) {
-        notes1[i].size += 2;
-        notes1[i].transparency -= 10;
-        notes1[i].strokeAlpha -= 10;
-        if (notes1[i].size > 70) {
+      if (notes1[i].y > 410 && notes1[i].y < 462) {
+        notes1[i].size += 5;
+        notes1[i].transparency -= 50;
+        notes1[i].strokeAlpha -= 50;
+        if (notes1[i].size > 65) {
+          notes1.splice(i, 1);
+        }
+      }
+    }
+  }
+  for (let i = 1; i < notes2.length; i++) {
+    if (keyIsDown(70)) {
+      if (notes2[i].y > 410 && notes2[i].y < 462) {
+        notes2[i].size += 5;
+        notes2[i].transparency -= 10;
+        notes2[i].strokeAlpha -= 10;
+        if (notes2[i].size > 65) {
+          notes2.splice(i, 1);
+        }
+      }
+    }
+  }
+  for (let i = 1; i < notes3.length; i++) {
+    if (keyIsDown(74)) {
+      if (notes3[i].y > 410 && notes3[i].y < 462) {
+        notes3[i].size += 5;
+        notes3[i].transparency -= 10;
+        notes3[i].strokeAlpha -= 10;
+        if (notes3[i].size > 65) {
+          notes3.splice(i, 1);
+        }
+      }
+    }
+  }
+  for (let i = 1; i < notes4.length; i++) {
+    if (keyIsDown(75)) {
+      if (notes4[i].y > 410 && notes4[i].y < 462) {
+        notes4[i].size += 5;
+        notes4[i].transparency -= 10;
+        notes4[i].strokeAlpha -= 10;
+        if (notes4[i].size > 65) {
+          notes4.splice(i, 1);
+        }
+      }
+    }
+  }
+  for (let i = 1; i < notes5.length; i++) {
+    if (keyIsDown(76)) {
+      if (notes5[i].y > 410 && notes5[i].y < 462) {
+        notes5[i].size += 5;
+        notes5[i].transparency -= 50;
+        notes5[i].strokeAlpha -= 50;
+        if (notes5[i].size >= 65) {
           notes1.splice(i, 1);
         }
       }
