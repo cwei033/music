@@ -89,6 +89,10 @@ function draw() {
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
+    case 'instructions':
+      instructions();
+      cnv.mouseClicked(instructMouseClicked);
+      break;
     case 'level 1':
       level1();
       drawNotes1();
@@ -126,12 +130,12 @@ function title() {
   textAlign(CENTER);
   push();
   textFont(titleFont);
-  text('Love and Time', width / 2, height*.35);
+  text('Love and Time', width / 2, height*.5);
   pop();
   push();
   textFont(subFont);
-  textSize(15);
-  text(`::use DFJKL keys to hit the corresponding notes::`, width / 2, height*.53);
+  //textSize(15);
+  //text(`::use DFJKL keys to hit the corresponding notes::`, width / 2, height*.53);
   textSize(20);
   text('begin the tale...', width*.46, height*.70);
   textFont(italicFont);
@@ -141,9 +145,48 @@ function title() {
 }
 
 function titleMouseClicked() {
+  state = 'instructions';
+
+}
+
+function instructions() {
+  background(bg);
+  push();
+  textFont(titleFont);
+  textSize(50)
+  text(`How to Play`, width*.5, height*.3);
+  textFont(subFont);
+  textSize(18);
+  text(`use DFJKL keys to hit the corresponding notes when they hit the line`, width*.5, height*.43);
+
+  fill(255);
+  strokeWeight(10);
+  stroke(255, 70)
+  circle(w * 1, height*.67, 60);
+  circle(w * 2, height*.75, 60);
+  circle(w * 3, height*.7, 60);
+  circle(w * 4, height*.85, 60);
+  circle(w * 5, height*.64, 60);
+  fill(200);
+  textSize(28);
+  text(`D`, w*1, height*.69);
+  text(`F`, w*2, height*.77);
+  text(`J`, w*3, height*.72);
+  text(`K`, w*4, height*.87);
+  text(`L`, w*5, height*.66);
+  fill(200);
+  noStroke();
+  rect(0, 430, 700, 2);
+  fill(255, 160);
+  textSize(16);
+  text(`(click to start...)`, width*.91, height*.98);
+
+  pop();
+}
+
+function instructMouseClicked() {
   state = 'level 1';
   song1.play();
-
 }
 
 function keyTyped() {
