@@ -141,6 +141,9 @@ function title() {
   textFont(italicFont);
   textSize(15);
   text('(click)', width * .6, height * .70);
+  fill(255, 160);
+  textSize(12);
+  text(`story courtesy of thesilentchild(tumblr)`, width * .84, height * .988);
   pop();
 }
 
@@ -747,9 +750,7 @@ function endOfLevel3() {
     text(`Knowledge smiled with deep wisdom and answered,
 "because only Time is capable of understanding
 how valuable Love is."`, width / 2, height * .48)
-    fill(255, 160);
-    textSize(14);
-    text(`story courtesy of thesilentchild(tumblr)`, width * .815, height * .98);
+
     pop();
     //cnv.mouseClicked(end3MouseClicked);
   } else {
